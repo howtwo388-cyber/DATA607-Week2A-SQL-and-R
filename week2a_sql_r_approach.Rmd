@@ -1,0 +1,96 @@
+---
+title: "DATA 607 Week 2A: SQL and R Approach"
+author: "Patricio Romero"
+date: "2026-09-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+For this assignment, I will collect movie ratings, store them in a relational SQL database, and analyze the data in R. The purpose is to demonstrate how SQL and R can be used together to organize, retrieve, and summarize survey data.
+
+I selected the following six recent popular movies:
+
+1. Spider-Man: Brand New Day
+2. The Odyssey
+3. Toy Story 5
+4. Coyote vs. Acme
+5. By Any Means
+6. Onslaught
+
+# Survey
+
+I created a Google Forms survey to collect the movie ratings. The survey is available at the following link:
+
+[Complete the Recent Movie Ratings Survey](https://docs.google.com/forms/d/e/1FAIpQLSf8D6YQyNsRlcdZxetwtJPKFbg9lCvEjK-GLSkJ_g7NXNEohQ/viewform)
+
+# Planned Approach
+
+I will create a Google Forms survey and ask at least five people to participate. To obtain a larger and more useful dataset, I will attempt to collect responses from approximately eight to ten participants.
+
+Participants will use an anonymous identifier and rate each movie they have seen on a scale from 1 to 5:
+
+- 1 – Very poor
+- 2 – Poor
+- 3 – Average
+- 4 – Good
+- 5 – Excellent
+
+If a participant has not seen a movie, the participant will select “I have not seen this movie.” The survey will not collect names or email addresses.
+
+The Google Forms responses will be stored in Google Sheets and downloaded as a CSV file. I will import the CSV file into R and transform the survey results from wide format to long format.
+
+# Planned Database Design
+
+I plan to use SQLite through the `DBI` and `RSQLite` packages. SQLite does not require a username or password and will allow the project to be reproduced without exposing database credentials.
+
+The database will use a normalized design with three tables:
+
+- `participants(participant_id, participant_code)`
+- `movies(movie_id, movie_title)`
+- `ratings(participant_id, movie_id, rating)`
+
+The `participants` and `movies` tables will contain the primary keys. The `ratings` table will connect participants and movies through foreign keys. This structure represents the many-to-many relationship between participants and movies.
+
+I will provide all SQL commands needed to create and populate the tables. I will also use a SQL `SELECT` query with `JOIN` statements to combine the tables.
+
+# Planned Data Preparation
+
+Google Forms will store the responses in Google Sheets. I will download the responses as a CSV file and import them into R.
+
+The survey output will initially have one row per participant and one column for each movie. I will transform this wide-format dataset into a tidy long-format dataset with one row per participant and movie combination.
+
+The response “I have not seen this movie” will be converted to a missing value. It will be represented as `NA` in R and `NULL` in the SQL database. Valid ratings will be checked to ensure that they are integers between 1 and 5.
+
+# Planned Analysis
+
+After loading the SQL data into R, I will use `dplyr` to:
+
+- Count the number of available ratings for each movie.
+- Calculate the average rating for each movie.
+- Count how many movies each participant rated.
+- Calculate the average rating given by each participant.
+- Count and summarize missing ratings.
+- Identify the highest-rated and most frequently rated movies.
+
+I will present the results in tables and simple graphs. I will not replace missing ratings with zero because zero is not part of the survey’s rating scale and would incorrectly reduce the averages.
+
+# Anticipated Challenges
+
+Some participants may not have seen all six movies, so the dataset will contain missing ratings. I will exclude missing values when calculating movie averages but report the number of missing ratings separately.
+
+The column names exported from Google Forms may be long and difficult to use. I will rename them in R before transforming the data. I will also check for duplicate participant codes, invalid ratings, and incomplete responses.
+
+# Expected Outcome
+
+I expect the movies to have different numbers of ratings because not every participant will have seen every movie. Popular movies may receive more ratings, but the movie with the most responses may not have the highest average rating.
+
+The completed project will demonstrate data collection, normalized SQL database design, missing-data handling, SQL queries, and data analysis in R.
+
+# AI Use
+
+ChatGPT was used to help interpret the assignment requirements, organize the planned approach, improve the English writing, select an appropriate database structure, and provide coding guidance. I will collect the survey responses, run the code, review the results, and confirm the conclusions myself.
