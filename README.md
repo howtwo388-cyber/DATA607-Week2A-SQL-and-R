@@ -102,6 +102,12 @@ This project uses a small convenience sample. Therefore, the results describe on
 
 Some movies received relatively few ratings, so their average ratings should be interpreted carefully.
 
+## Video Explainer
+
+My Week 2A video presentation is available here:
+
+[Watch the DATA 607 Week 2A Video Explainer](https://youtu.be/CX8djwpKEk8)
+
 ## AI Use
 
 ChatGPT was used to help interpret the assignment requirements, improve the English writing, organize the project, and provide coding guidance. I ran the code and reviewed the results to confirm that the analysis was accurate.
