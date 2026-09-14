@@ -15,12 +15,12 @@ For this assignment, I will collect movie ratings, store them in a relational SQ
 
 I selected the following six recent popular movies:
 
-1. Spider-Man: Brand New Day
-2. The Odyssey
-3. Toy Story 5
-4. Coyote vs. Acme
-5. By Any Means
-6. Onslaught
+1.  Spider-Man: Brand New Day
+2.  The Odyssey
+3.  Toy Story 5
+4.  Coyote vs. Acme
+5.  By Any Means
+6.  Onslaught
 
 # Survey
 
@@ -90,6 +90,12 @@ The column names exported from Google Forms may be long and difficult to use. I 
 I expect the movies to have different numbers of ratings because not every participant will have seen every movie. Popular movies may receive more ratings, but the movie with the most responses may not have the highest average rating.
 
 The completed project will demonstrate data collection, normalized SQL database design, missing-data handling, SQL queries, and data analysis in R.
+
+## Video Explainer
+
+My Week 2A video presentation is available here:
+
+[Watch the DATA 607 Week 2A Video Explainer](https://youtu.be/CX8djwpKEk8)
 
 # AI Use
 
